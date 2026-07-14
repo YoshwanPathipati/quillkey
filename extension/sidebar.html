@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QuillKey</title>
+  <link rel="stylesheet" href="sidebar.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">🪶 QuillKey</div>
+    <div class="header-right">
+      <span id="tone-badge" class="tone-badge" hidden></span>
+      <button id="close-btn" title="Close (Alt+G)">✕</button>
+    </div>
+  </header>
+
+  <div id="warnings"></div>
+
+  <div class="mode-row">
+    <label for="mode-select">Mode</label>
+    <select id="mode-select">
+      <option value="academic">📚 Academic</option>
+      <option value="professional" selected>💼 Professional</option>
+      <option value="creative">✍️ Creative</option>
+      <option value="social">📱 Social Media</option>
+    </select>
+  </div>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="suggestions">Suggestions</button>
+    <button class="tab" data-tab="metrics">Metrics</button>
+    <button class="tab" data-tab="coach">Coach</button>
+  </nav>
+
+  <main>
+    <!-- SUGGESTIONS -->
+    <section id="tab-suggestions" class="tab-panel active">
+      <div class="clarity-row" id="clarity-row" hidden>
+        <span class="clarity-label">Clarity</span>
+        <div class="clarity-bar"><div id="clarity-fill"></div></div>
+        <span id="clarity-num"></span>
+      </div>
+      <div id="style-loading" class="muted" hidden>🤔 Analyzing style…</div>
+      <div class="rewrite-box" id="rewrite-box" hidden>
+        <button id="rewrite-toggle" class="link-btn">Show full rewrite ▾</button>
+        <div id="rewrite-text" hidden></div>
+        <button id="rewrite-apply" class="small-btn" hidden>Replace text with rewrite</button>
+      </div>
+      <div class="list-head">
+        <span id="sugg-count" class="muted">No suggestions yet — start typing.</span>
+        <button id="fix-all" class="small-btn" hidden>Fix all</button>
+      </div>
+      <div id="suggestion-list"></div>
+    </section>
+
+    <!-- METRICS -->
+    <section id="tab-metrics" class="tab-panel">
+      <div id="metrics-empty" class="muted">Focus a text field and start typing to see live metrics.</div>
+      <div id="metrics-list" hidden></div>
+    </section>
+
+    <!-- COACH -->
+    <section id="tab-coach" class="tab-panel">
+      <div class="coach-card">
+        <div class="coach-title">📈 Writing Improvement Score</div>
+        <div class="score-ring"><span id="improve-score">–</span></div>
+        <div class="muted" id="score-detail"></div>
+      </div>
+      <div class="coach-card">
+        <div class="coach-title">💡 Tip of the session</div>
+        <div id="coach-tip" class="tip-text">…</div>
+      </div>
+      <div class="coach-card">
+        <div class="coach-title">🔁 Top mistakes (7 days)</div>
+        <ol id="top-mistakes" class="mistake-list"></ol>
+      </div>
+      <div class="coach-card">
+        <div class="coach-title">🗓️ Weekly summary</div>
+        <div id="weekly-summary" class="muted">…</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+services:
+  languagetool:
+    image: erikvl87/languagetool
+    container_name: local-grammarly-lt
+    ports:
+      - "8010:8010"
+    environment:
+      - Java_Xms=256m
+      - Java_Xmx=768m
+    restart: unless-stopped

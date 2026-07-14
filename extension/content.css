@@ -1,0 +1,106 @@
+/* Underline overlays + suggestion popup injected into host pages. */
+
+.lg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 2147483640;
+}
+
+.lg-underline {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  border-bottom: 2px solid;
+  background: transparent;
+}
+.lg-underline:hover { background: rgba(128, 128, 128, 0.12); }
+.lg-underline[data-kind="grammar"]  { border-color: #e5484d; }
+.lg-underline[data-kind="spelling"] { border-color: #f5b301; }
+.lg-underline[data-kind="style"]    { border-color: #3b82f6; }
+.lg-underline[data-kind="clarity"]  { border-color: #30a46c; }
+
+.lg-popup {
+  position: absolute;
+  z-index: 2147483646;
+  width: 320px;
+  background: #1c1c22;
+  color: #e6e6ea;
+  border: 1px solid #34343e;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  font: 13px/1.45 -apple-system, "Segoe UI", system-ui, sans-serif;
+  padding: 12px;
+}
+.lg-popup .lg-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+.lg-badge-grammar  { background: #3b1519; color: #ff8f94; }
+.lg-badge-spelling { background: #3a2e07; color: #ffd60a; }
+.lg-badge-style    { background: #12233f; color: #7ab8ff; }
+.lg-badge-clarity  { background: #0f2b1d; color: #5fd39c; }
+
+.lg-popup .lg-original { text-decoration: line-through; opacity: 0.65; }
+.lg-popup .lg-fix { color: #5fd39c; font-weight: 600; }
+.lg-popup .lg-explain { margin: 8px 0 10px; opacity: 0.85; }
+.lg-popup .lg-actions { display: flex; gap: 8px; }
+.lg-popup button {
+  flex: 1;
+  border: 0;
+  border-radius: 7px;
+  padding: 7px 0;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.lg-popup .lg-accept { background: #30a46c; color: #fff; }
+.lg-popup .lg-ignore { background: #2a2a33; color: #c9c9d1; }
+.lg-popup .lg-why    { background: #12233f; color: #7ab8ff; }
+.lg-popup .lg-teacher {
+  margin-top: 10px;
+  padding: 9px;
+  background: #12233f;
+  border-radius: 7px;
+  color: #b9d6ff;
+}
+
+.lg-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 380px;
+  z-index: 2147483647;
+  background: #30a46c;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font: 600 13px -apple-system, "Segoe UI", system-ui, sans-serif;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  animation: lg-toast-in 0.2s ease-out;
+}
+@keyframes lg-toast-in {
+  from { transform: translateY(12px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+#lg-sidebar-frame {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 340px;
+  height: 100vh;
+  border: 0;
+  z-index: 2147483645;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease;
+  background: transparent;
+  color-scheme: dark;
+}
+#lg-sidebar-frame.lg-hidden { transform: translateX(100%); }
